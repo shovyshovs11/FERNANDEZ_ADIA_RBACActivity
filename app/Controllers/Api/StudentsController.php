@@ -28,7 +28,7 @@ class StudentsController extends BaseApiController
         // ADAPTED: Fetch students (role_id = 1 for student, or check role name)
         // Adjust this based on your actual roles table
         $students = $this->userModel
-            ->select('users.id, users.fullname, users.email, users.photo, roles.name as role_name')
+            ->select('users.id, users.name, users.email, users.profile_image, roles.name as role_name')
             ->join('roles', 'roles.id = users.role_id')
             ->where('roles.name', 'student')
             ->findAll();
@@ -51,7 +51,7 @@ class StudentsController extends BaseApiController
 
         // ADAPTED: Query to get single student with role info
         $student = $this->userModel
-            ->select('users.id, users.fullname, users.email, users.photo, users.bio, users.birthdate, users.contact, users.address, roles.name as role_name')
+            ->select('users.id, users.name, users.email, users.profile_image, users.phone, users.address, users.student_id, users.course, users.year_level, users.section, roles.name as role_name')
             ->join('roles', 'roles.id = users.role_id')
             ->where('users.id', $id)
             ->where('roles.name', 'student')

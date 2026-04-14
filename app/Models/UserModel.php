@@ -6,12 +6,12 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table          = 'users';
-    protected $primaryKey     = 'id';
+    protected $table = 'users';
+    protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType     = 'array';
+    protected $returnType = 'array';
     protected $useSoftDeletes = true;
-    protected $deletedField   = 'deleted_at';
+    protected $deletedField = 'deleted_at';
 
     protected $allowedFields = [
         'name',
@@ -30,11 +30,11 @@ class UserModel extends Model
     ];
 
     protected $useTimestamps = true;
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
 
     protected $validationRules = [
-        'name'  => 'required|min_length[3]|max_length[100]',
+        'name' => 'required|min_length[3]|max_length[100]',
         'email' => 'required|valid_email|is_unique[users.email]',
     ];
 
