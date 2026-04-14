@@ -31,7 +31,7 @@
 #--------------------------------------------------------------------
 
 # database.default.hostname = localhost
-# database.default.database = ci4_exam_db
+# database.default.database = ci4_crud_exam
 # database.default.username = root
 # database.default.password = 
 # database.default.DBDriver = MySQLi

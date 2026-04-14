@@ -40,3 +40,17 @@ $routes->group('admin', ['filter' => 'auth|admin'], function ($routes) {
     $routes->get('users', 'Admin\UserAdminController::index');
     $routes->post('users/assign-role/(:num)', 'Admin\UserAdminController::assignRole/$1');
 });
+
+$routes->post('api/v1/auth/token', 'Api\AuthController::issueToken');
+
+// Protected API routes (require Bearer token)
+$routes->group('api/v1', ['filter' => 'api_auth'], function ($routes) {
+
+    // Auth
+    $routes->delete('auth/token', 'Api\AuthController::revokeToken');
+
+    // Students resource
+    $routes->get('students', 'Api\StudentsController::index');
+    $routes->get('students/(:num)', 'Api\StudentsController::show/$1');
+
+});

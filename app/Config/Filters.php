@@ -15,30 +15,33 @@ use App\Filters\CoordinatorFilter;
 class Filters extends BaseFilters
 {
     public array $aliases = [
-        'csrf'          => CSRF::class,
-        'toolbar'       => DebugToolbar::class,
-        'auth'          => AuthFilter::class,
-        'guest'         => GuestFilter::class,
-        'student'       => StudentFilter::class,
-        'teacher'       => TeacherFilter::class,
-        'admin'         => AdminFilter::class,
-        'coordinator'   => CoordinatorFilter::class,
-        'auth|student'  => [AuthFilter::class, StudentFilter::class],
-        'auth|teacher'  => [AuthFilter::class, TeacherFilter::class],
-        'auth|admin'    => [AuthFilter::class, AdminFilter::class],
+        'csrf' => CSRF::class,
+        'toolbar' => DebugToolbar::class,
+        'auth' => AuthFilter::class,
+        'guest' => GuestFilter::class,
+        'student' => StudentFilter::class,
+        'teacher' => TeacherFilter::class,
+        'admin' => AdminFilter::class,
+        'coordinator' => CoordinatorFilter::class,
+        'auth|student' => [AuthFilter::class, StudentFilter::class],
+        'auth|teacher' => [AuthFilter::class, TeacherFilter::class],
+        'auth|admin' => [AuthFilter::class, AdminFilter::class],
         'auth|coordinator' => [AuthFilter::class, CoordinatorFilter::class],
+
+        //Bearer token filter
+        'api_auth' => \App\Filters\ApiAuthFilter::class,
     ];
 
     public array $required = [
         'before' => [],
-        'after'  => [
+        'after' => [
             'toolbar',
         ],
     ];
 
     public array $globals = [
         'before' => [],
-        'after'  => [],
+        'after' => [],
     ];
 
     public array $methods = [];
